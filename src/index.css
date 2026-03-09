@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+@layer base {
+  body {
+    @apply antialiased text-gray-800 bg-gradient-to-br from-rose-50 via-white to-sky-50 min-h-screen;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glass effect for navigation */
+  .glass-nav {
+    @apply bg-white/80 backdrop-blur-md border-b border-rose-100;
+  }
+  
+  /* Tag styles - Warm Pink Primary */
+  .tag-solid {
+    @apply px-3 py-1.5 rounded-lg text-sm font-medium bg-rose-100 text-rose-700;
+  }
+  
+  .tag-outline {
+    @apply px-3 py-1.5 rounded-lg text-sm font-medium border border-rose-300 text-rose-600 bg-transparent;
+  }
+  
+  .tag-soft {
+    @apply px-3 py-1.5 rounded-lg text-sm font-medium bg-gradient-to-r from-rose-100/60 to-sky-100/60 text-gray-700;
+  }
+  
+  /* Floating tag styles */
+  .floating-tag {
+    @apply px-3 py-1.5 rounded-full text-xs font-medium bg-white/90 shadow-lg shadow-rose-100/50 text-gray-700 border border-rose-100 whitespace-nowrap;
+  }
+}
+
+/* Custom scrollbar - Rose tint */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-rose-50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-rose-200 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-rose-300;
+}
+
+/* Selection color - Rose */
+::selection {
+  @apply bg-rose-100 text-rose-900;
+}
