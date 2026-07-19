@@ -1,51 +1,70 @@
-import { 
-  Brain, 
-  Code2, 
-  Eye, 
-  Target,
-} from 'lucide-react';
+import { Brain, Code2, Eye, Target } from 'lucide-react';
 
-// 卡片数据配置
+// 卡片数据 - 四个独立色系（带高级装饰配置）
 const competencyCards = [
   {
     id: 'algorithm',
     icon: Brain,
-    title: '算法策略',
-    description: '具备 SFT、RM/RL 训练数据构建经验，擅长意图判断与链路设计。',
-    tags: ['SFT/RL', 'HF', '模型微调', '数据标注'],
-    bgColor: 'bg-rose-50',
-    iconColor: 'text-rose-500',
-    borderColor: 'border-rose-100',
+    title: 'AI技术架构',
+    description: '关注 AI 行业动态，熟悉 Harness、Agentic RL 等主流 AI 技术架构与应用逻辑，了解 Post-training 与 AI 算法常识。',
+    tags: ['Harness', 'Agentic RL', 'Post-training', 'AI算法'],
+    theme: {
+      topLine: 'bg-gradient-to-r from-blue-400 to-sky-300',
+      iconBg: 'bg-blue-50',
+      icon: 'text-blue-500',
+      watermark: 'text-blue-900',
+      tagBg: 'bg-blue-50',
+      tagText: 'text-gray-900',
+      tagBorder: 'border-blue-100/50',
+    },
   },
   {
     id: 'engineering',
     icon: Code2,
-    title: '工程落地',
-    description: '熟练使用 Python (SQL)、C++ 及多智能体框架，具备 LoRA 微调实践经验。',
-    tags: ['Python', 'C++', '多智能体Agent'],
-    bgColor: 'bg-sky-50',
-    iconColor: 'text-sky-500',
-    borderColor: 'border-sky-100',
+    title: 'AI工程交付',
+    description: '工作中产出多个 Skills 供业务使用，拥有丰富的 Vibe Coding 与 Prompt Engineering 实践经验，善于利用前沿 AI 生态工具快速实现业务交付。',
+    tags: ['Skills', 'Vibe Coding', 'Prompt Engineering'],
+    theme: {
+      topLine: 'bg-gradient-to-r from-teal-400 to-emerald-300',
+      iconBg: 'bg-teal-50',
+      icon: 'text-teal-500',
+      watermark: 'text-teal-900',
+      tagBg: 'bg-teal-50',
+      tagText: 'text-gray-900',
+      tagBorder: 'border-teal-100/50',
+    },
   },
   {
     id: 'user-insight',
     icon: Eye,
     title: '用户洞察',
-    description: '结合心理学背景进行场景建模，提升 AI 主动性与情感价值。',
-    tags: ['用户研究', '场景建模'],
-    bgColor: 'bg-rose-50',
-    iconColor: 'text-rose-500',
-    borderColor: 'border-rose-100',
+    description: '结合用户增长实践经验进行策略设计，探索AI在增长方向的业务潜力。',
+    tags: ['用户研究', '增长策略'],
+    theme: {
+      topLine: 'bg-gradient-to-r from-pink-400 to-rose-300',
+      iconBg: 'bg-pink-50',
+      icon: 'text-pink-500',
+      watermark: 'text-pink-900',
+      tagBg: 'bg-pink-50',
+      tagText: 'text-gray-900',
+      tagBorder: 'border-pink-100/50',
+    },
   },
   {
     id: 'evaluation',
     icon: Target,
     title: '评测体系',
-    description: '沉淀评测方法论，量化主观体验，搭建自动化巡检的闭环流水线。',
-    tags: ['评测', '设计自动化', '数据分析'],
-    bgColor: 'bg-sky-50',
-    iconColor: 'text-sky-500',
-    borderColor: 'border-sky-100',
+    description: '评测体系0→1搭建，设计模型推理评测模块核心架构，覆盖主流大模型评测场景。',
+    tags: ['评测指标', '动态评估', '策略迭代'],
+    theme: {
+      topLine: 'bg-gradient-to-r from-indigo-400 to-violet-300',
+      iconBg: 'bg-indigo-50',
+      icon: 'text-indigo-500',
+      watermark: 'text-indigo-900',
+      tagBg: 'bg-indigo-50',
+      tagText: 'text-gray-900',
+      tagBorder: 'border-indigo-100/50',
+    },
   },
 ];
 
@@ -54,78 +73,53 @@ export default function CoreCompetenciesSection() {
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* 标题区域 */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
             核心竞争力
           </h2>
           <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            技术深度与心理学洞察的交叉融合，构建真正理解用户的AI产品
+            AI边界与用户体验的交叉融合，构建真正理解用户的AI产品
           </p>
         </div>
 
-        {/* 2x2 Grid 卡片区域 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {/* 2x2 Grid 卡片区域 - 紧凑布局 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
           {competencyCards.map((card) => {
             const IconComponent = card.icon;
+            const t = card.theme;
             
             return (
               <div
                 key={card.id}
-                className={`
-                  ${card.bgColor} 
-                  ${card.borderColor}
-                  rounded-2xl 
-                  p-6 sm:p-8 
-                  border 
-                  transition-all 
-                  duration-300 
-                  ease-out
-                  hover:-translate-y-1 
-                  hover:shadow-rose-100
-                  flex 
-                  flex-col
-                  min-h-[280px]
-                `}
+                className="relative overflow-hidden bg-white rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group p-5"
               >
-                {/* 顶部：Icon + 标题 */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`
-                    w-10 h-10 
-                    rounded-xl 
-                    bg-white/80 
-                    flex 
-                    items-center 
-                    justify-center 
-                    shadow-sm
-                    ${card.iconColor}
-                  `}>
+                {/* 顶部渐变彩色线 */}
+                <div className={`absolute top-0 left-0 w-full h-1 ${t.topLine}`} />
+
+                {/* 背景水印大图标 */}
+                <IconComponent
+                  className={`absolute -right-4 -bottom-4 w-24 h-24 ${t.watermark} opacity-5 transform group-hover:scale-110 transition-transform duration-500 pointer-events-none`}
+                />
+
+                {/* 顶部：Icon + 标题 - 紧凑间距 */}
+                <div className="flex items-center gap-3 mb-2">
+                  <div className={`p-2.5 rounded-xl ${t.iconBg} ${t.icon}`}>
                     <IconComponent className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800">
-                    {card.title}
-                  </h3>
+                  <h3 className="text-gray-800 font-bold text-lg">{card.title}</h3>
                 </div>
 
                 {/* 中间：描述文字 */}
-                <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
+                <p className="text-gray-500 text-sm leading-snug mb-3">
                   {card.description}
                 </p>
 
-                {/* 底部：标签区域 */}
-                <div className="flex flex-wrap gap-2 mt-auto">
+                {/* 底部：标签区域 - 同色系 */}
+                <div className="flex flex-wrap gap-2">
                   {card.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="
-                        px-3 py-1 
-                        rounded-full 
-                        text-xs 
-                        font-medium
-                        bg-white/70
-                        text-gray-700
-                        border border-white/50
-                        backdrop-blur-sm
-                      "
+                      className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${t.tagBg} ${t.tagText} ${t.tagBorder}`}
                     >
                       {tag}
                     </span>

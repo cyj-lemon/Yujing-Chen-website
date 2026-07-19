@@ -1,6 +1,7 @@
 import { Link2, Clock, Target } from 'lucide-react';
+import photo3 from '../assets/photo3.png';
 
-// 技术栈标签
+// 技术栈标签 - 统一使用 pink 色系
 const techStack = [
   '多模态生成',
   'Diffusion-DiT',
@@ -15,22 +16,22 @@ const innovations = [
     icon: Link2,
     title: '语义特征深度融合',
     description: '引入 REG 机制，将文本风格 Token 与音频潜变量同步加噪，实现底层特征维度的精准纠缠，使目标风格精准嵌入旋律语义。',
-    color: 'text-rose-500',
-    bgColor: 'bg-rose-50',
+    iconColor: 'text-blue-500',
+    borderColor: 'border-blue-500',
   },
   {
     icon: Clock,
     title: '时序维度风格一致',
     description: '突破传统绝对位置编码限制，在 DiT 注意力模块中引入旋转位置嵌入 (RoPE)，保障长程序列音频生成中的横向时间轴稳定性。',
-    color: 'text-pink-500',
-    bgColor: 'bg-pink-50',
+    iconColor: 'text-blue-500',
+    borderColor: 'border-blue-500',
   },
   {
     icon: Target,
     title: 'Diffusion-DPO 偏好对齐',
     description: '无需引入强化学习奖励模型，通过对比学习直接优化偏好概率，解决少样本特征畸变，确立资源友好的风格迁移训练新范式。',
-    color: 'text-rose-500',
-    bgColor: 'bg-rose-50',
+    iconColor: 'text-blue-500',
+    borderColor: 'border-blue-500',
   },
 ];
 
@@ -53,7 +54,7 @@ export default function AcademicSection() {
           <div className="
             bg-white 
             rounded-2xl 
-            border border-rose-50
+            border border-pink-50
             shadow-sm 
             hover:shadow-md
             transition-shadow 
@@ -62,14 +63,14 @@ export default function AcademicSection() {
           ">
             {/* Top: 课题属性与标题 */}
             <div className="mb-8">
-              {/* 学校标签 - 玫瑰色 */}
+              {/* 学校标签 */}
               <span className="
                 inline-block 
                 px-3 py-1 
-                rounded-lg 
+                rounded-full
                 text-xs font-semibold
-                bg-rose-100 
-                text-rose-700
+                bg-pink-100
+                text-pink-700
                 mb-4
               ">
                 东南大学硕士学位课题
@@ -86,7 +87,7 @@ export default function AcademicSection() {
                 基于语义特征融合与直接偏好对齐的少样本音乐风格迁移框架
               </h3>
 
-              {/* 技术栈标签云 */}
+              {/* 技术栈标签云 - 统一 pink 色系 */}
               <div className="flex flex-wrap gap-2">
                 {techStack.map((tag, index) => (
                   <span
@@ -95,9 +96,9 @@ export default function AcademicSection() {
                       px-3 py-1 
                       rounded-full 
                       text-xs font-medium
-                      border border-rose-200
-                      text-rose-600
-                      bg-rose-50/50
+                      border border-pink-200
+                      text-gray-900
+                      bg-pink-50
                     "
                   >
                     {tag}
@@ -121,16 +122,17 @@ export default function AcademicSection() {
                       <div className={`
                         w-10 h-10 
                         rounded-xl 
-                        ${item.bgColor}
+                        bg-pink-50
                         flex items-center justify-center
                         flex-shrink-0
                       `}>
-                        <IconComponent className={`w-5 h-5 ${item.color}`} />
+                        <IconComponent className={`w-5 h-5 ${item.iconColor}`} />
                       </div>
                       <h4 className={`
                         text-base font-bold 
-                        ${item.color}
-                        pt-2
+                        text-slate-800
+                        border-l-4 ${item.borderColor} pl-3
+                        pt-1
                       `}>
                         {item.title}
                       </h4>
@@ -143,6 +145,19 @@ export default function AcademicSection() {
                   </div>
                 );
               })}
+            </div>
+
+            {/* 占位图片 - 使用绝对路径，object-contain 确保完整显示 */}
+            <div className="mt-8">
+              <img
+                src={photo3}
+                alt="学术架构图"
+                className="w-full h-auto max-h-96 object-contain rounded-xl shadow-sm mx-auto"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
+              />
             </div>
           </div>
         </div>
